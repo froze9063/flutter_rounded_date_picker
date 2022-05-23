@@ -17,23 +17,23 @@ class FlutterRoundedButtonAction extends StatelessWidget {
 
   const FlutterRoundedButtonAction(
       {Key? key,
-      required this.localizations,
-      this.textButtonNegative,
-      this.textButtonPositive,
-      this.textActionButton,
-      this.onTapButtonAction,
-      this.onTapButtonPositive,
-      this.onTapButtonNegative,
-      this.textStyleButtonPositive,
-      this.textStyleButtonNegative,
-      this.textStyleButtonAction,
-      required this.borderRadius,
-      this.paddingActionBar,
-      this.background})
+        required this.localizations,
+        this.textButtonNegative,
+        this.textButtonPositive,
+        this.textActionButton,
+        this.onTapButtonAction,
+        this.onTapButtonPositive,
+        this.onTapButtonNegative,
+        this.textStyleButtonPositive,
+        this.textStyleButtonNegative,
+        this.textStyleButtonAction,
+        required this.borderRadius,
+        this.paddingActionBar,
+        this.background})
       : super(key: key);
 
   List<Widget> _buildActionsButton() {
-    final Widget negativeButton = FlatButton(
+    final Widget negativeButton = TextButton(
       child: Text(
         textButtonNegative ?? localizations.cancelButtonLabel,
         style: textStyleButtonNegative,
@@ -41,7 +41,7 @@ class FlutterRoundedButtonAction extends StatelessWidget {
       onPressed: onTapButtonNegative,
     );
 
-    final Widget positiveButton = FlatButton(
+    final Widget positiveButton = TextButton(
       child: Text(
         textButtonPositive ?? localizations.okButtonLabel,
         style: textStyleButtonPositive,
@@ -50,7 +50,7 @@ class FlutterRoundedButtonAction extends StatelessWidget {
     );
 
     if (textActionButton != null) {
-      final Widget leftButton = FlatButton(
+      final Widget leftButton = TextButton(
         child: Text(textActionButton!, style: textStyleButtonAction),
         onPressed: onTapButtonAction,
       );
@@ -71,7 +71,7 @@ class FlutterRoundedButtonAction extends StatelessWidget {
       decoration: BoxDecoration(
           color: background,
           borderRadius:
-              orientation == Orientation.landscape ? BorderRadius.only(bottomRight: Radius.circular(borderRadius)) : BorderRadius.vertical(bottom: Radius.circular(borderRadius))),
+          orientation == Orientation.landscape ? BorderRadius.only(bottomRight: Radius.circular(borderRadius)) : BorderRadius.vertical(bottom: Radius.circular(borderRadius))),
       child: ButtonBar(
         alignment: textActionButton != null ? MainAxisAlignment.spaceBetween : MainAxisAlignment.end,
         children: _buildActionsButton(),
